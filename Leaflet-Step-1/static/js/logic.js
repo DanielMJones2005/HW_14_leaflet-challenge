@@ -1,7 +1,7 @@
 // Create a map object
 var myMap = L.map("map", {
     center: [15.5994, -28.6731],
-    zoom: 3,
+    zoom: 2.5,
 });
 
 
@@ -65,30 +65,18 @@ d3.json(queryUrl, function(d) {
 });
 
 
-// function getColor(d) {
+ function getColor(d) {
 
-// 	return d < 2.5 ? "yellow" :
-// 	       d < 5.4 ? "rgb(179, 255, 0)" :
-//          d < 6.0 ? "green" :
-//          d < 6.9 ? "orange" :
-//          d < 7.9 ? "brown" :
-//          d < 8.0 ? "red" :
-//                     "red";
-//         };
+ 	return d < 2.5 ? "yellow" :
+ 	       d < 5.4 ? "rgb(179, 255, 0)" :
+          d < 6.0 ? "green" :
+          d < 6.9 ? "orange" :
+          d < 7.9 ? "brown" :
+          d < 8.0 ? "red" :
+                     "red";
+         };
 
 
-function getColor(d) {
-
-  return d > 7.9 ? "red" :
-         d > 6.9 ? "brown" :
-         d > 6.0 ? "orange" :
-         d > 5.4 ? "green" :
-         d > 2.5 ? "rgb(179, 255, 0)" :
-         d > 0.0 ? "yellow" :
-                    "yellow";
-                };
-
-//var legend = L.control({position: 'bottomright'});
 
 // Group layers as overlay pane
 
@@ -103,7 +91,7 @@ legend.onAdd = function (map) {
 	// loop through our density intervals and generate a label with a colored square for each interval
 	for (var i = 0; i < grades.length; i++) {
 		div.innerHTML +=
-			'<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+			'<i style="background:' + getColor(grades[i] + .5) + '"></i> ' +
 			grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
 	}
 
