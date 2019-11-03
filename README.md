@@ -77,6 +77,3 @@ and seismic activity
         - Past 7 Days 
         - Past Day
         - Past Hour
-        
-        - 
-
