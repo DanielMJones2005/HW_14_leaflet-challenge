@@ -45,31 +45,32 @@ organizations (and hopefully secure more funding..) on issues facing our planet.
 ## Level 1: Basic Visualization
 - Visualize an earthquake data set
 - Get data set
-  - The USGS provides earthquake data in a number of different formats, updated every 5 minutes 
+  - The USGS provides earthquake data in a number of different formats, updated every 5 minutes
+    - [USGS GeoJSON Summary Format](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
     - Used the past 30 days data/URL
 - Import & Visualize the Data
-  - Created a map using Leaflet that plots all of the earthquakes from the data set based on their longitude and latitude
-  - Data markers reflect the magnitude of the earthquake in their size and color
+  - Created a map using Leaflet that plots all of the earthquakes from the data set based on an earthquake's longitude and latitude
+  - Data markers reflect the magnitude of the earthquake in its size and color
     - Earthquakes with higher magnitudes appear larger and used different colors for different magnitudes
-  - Included popups that provide additional information about the earthquake when a marker is clicked
-    - Popup report place and magnitude of earthquake
-  - Created a legend that will provides context for map data related to each earthquake's magnitude
+  - Included popups that provide additional information about an earthquake when a marker is clicked
+    - Popups report place and magnitude of an earthquake
+  - Created a legend that provides context for map data related to each earthquake's magnitude
 
 ## Level 2: More Data (Optional)
 - The USGS wants to plot a second data set on a map to illustrate the relationship between tectonic plates 
-and seismic activity. 
+and seismic activity
 - Pulled in data on tectonic plates
-  - Source: https://github.com/fraxen/tectonicplates
+  - Source: [github.com/fraxen/tectonicplates](https://github.com/fraxen/tectonicplates)
 - Import & Visualize the Data
   - Same information as in Level 1 in addition to 
   - Visualization of data on tectonic plates
   - Added base maps to choose from
-  - Added layer controls to the map
-    - Separated out earthquakes data sets and fault lines into overlays that can be turned on and off independently
-      - Base Layers
+     - Base Layers
         - Mapbox Satellite
         - Mapbox Light
         - Mapbox Outdoors
+  - Added layer controls to the map
+    - Separated out earthquakes data sets and fault lines into overlays that can be turned on and off independently
       - Overlay Maps
         - Fault lines
         - Past Month
