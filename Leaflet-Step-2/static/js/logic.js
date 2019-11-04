@@ -90,52 +90,51 @@ d3.json(queryEqUrl_Mo, function (eqMoData){
      }
   
 
-    for (var i = 0; i < EqUrl_MoData.length; i++) {
+  L.geoJson(eqMoData, {
+    style: function(feature) {
+      let mag = feature.properties.mag;
       let color = "";
-       if (EqUrl_MoData[i].properties["mag"]<= 2.54) {
+      if (mag <= 2.54) {
         color = "yellow";
-        radius = EqUrl_MoData[i].properties["mag"] * 1;
+        radius = mag * 1;
         }
-       else if (EqUrl_MoData[i].properties["mag"] <= 5.44) {
+      else if (mag <= 5.44) {
         color = "rgb(179, 255, 0)";
-        radius = EqUrl_MoData[i].properties["mag"] * 2;
+        radius = mag * 2;
         }
-       else if (EqUrl_MoData[i].properties["mag"] <= 6.04) {
+      else if (mag <= 6.04) {
         color = "green";
-        radius = EqUrl_MoData[i].properties["mag"] * 3;
+        radius = mag * 3;
         }
-       else if (EqUrl_MoData[i].properties["mag"] <= 6.94) {
+      else if (mag <= 6.94) {
         color = "orange";
-        radius = EqUrl_MoData[i].properties["mag"] * 4;
+        radius = mag * 4;
         }
-       else if (EqUrl_MoData[i].properties["mag"] <= 7.94) {
+      else if (mag <= 7.94) {
         color = "brown";
-        radius = EqUrl_MoData[i].properties["mag"] * 5;
+        radius = mag * 5;
         }
-       else {
+      else {
         color = "red";
-        radius = EqUrl_MoData[i].properties["mag"] * 6;
+        radius = mag * 6;
         }  
 
-
-  var geojsonMoDataOptions = {
-    radius: radius,
-    fillColor: color,
-    color: color,
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.5
-  };}
-
-
-  L.geoJson(eqMoData, {
-    pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, geojsonMoDataOptions);
+      return {
+        color: color,
+        radius: radius
+      };
     },
-    onEachFeature: onEachFeature
+    
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, {
+        fillOpacity: 0.5
+        } 
+      );
+    },
+    onEachFeature: onEachFeature,
   }).addTo(eqPastMo);
-
 })
+
 
 
 
@@ -151,64 +150,53 @@ d3.json(queryEqUrl_7days, function (d7){
          );
      }
   
-
-    for (var i = 0; i < Eq7DaysData.length; i++) {
+  L.geoJson(d7, {
+    style: function(feature) {
+      let mag = feature.properties.mag;
       let color = "";
-       if (Eq7DaysData[i].properties["mag"]<= 2.54) {
+      if (mag <= 2.54) {
         color = "yellow";
-        radius = Eq7DaysData[i].properties["mag"] * 1;
+        radius = mag * 1;
         }
-       else if (Eq7DaysData[i].properties["mag"] <= 5.44) {
+      else if (mag <= 5.44) {
         color = "rgb(179, 255, 0)";
-        radius = Eq7DaysData[i].properties["mag"] * 2;
+        radius = mag * 2;
         }
-       else if (Eq7DaysData[i].properties["mag"] <= 6.04) {
+      else if (mag <= 6.04) {
         color = "green";
-        radius = Eq7DaysData[i].properties["mag"] * 3;
+        radius = mag * 3;
         }
-       else if (Eq7DaysData[i].properties["mag"] <= 6.94) {
+      else if (mag <= 6.94) {
         color = "orange";
-        radius = Eq7DaysData[i].properties["mag"] * 4;
+        radius = mag * 4;
         }
-       else if (Eq7DaysData[i].properties["mag"] <= 7.94) {
+      else if (mag <= 7.94) {
         color = "brown";
-        radius = Eq7DaysData[i].properties["mag"] * 5;
+        radius = mag * 5;
         }
-       else {
+      else {
         color = "red";
-        radius = Eq7DaysData[i].properties["mag"] * 6;
+         radius = mag * 6;
         }  
 
-
-  var geojson7DaysDataOptions = {
-    radius: radius,
-    fillColor: color,
-    color: color,
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.5
-  };}
-
-
-  L.geoJson(d7, {
-    pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, geojson7DaysDataOptions);
+      return {
+       color: color,
+       radius: radius
+      };
     },
-    onEachFeature: onEachFeature
+  
+    pointToLayer: function (feature, latlng) {
+      return L.circleMarker(latlng, {
+        fillOpacity: 0.5
+        } 
+    );
+    },
+    onEachFeature: onEachFeature,
   }).addTo(eq7Days);
 
 })
 
-
-
 //==========================Earthquake: Past Day ==========================================================
- 
-//queryEqUrl_1hr
-
-
-//eq1Hr
-
-
 d3.json(queryEqUrl_1day, function (d1){
   let EqDayData = d1.features;
   
@@ -220,55 +208,50 @@ d3.json(queryEqUrl_1day, function (d1){
          );
      }
   
-
-    for (var i = 0; i < EqDayData.length; i++) {
-      let color = "";
-       if (EqDayData[i].properties["mag"]<= 2.54) {
-        color = "yellow";
-        radius = EqDayData[i].properties["mag"] * 1;
-        }
-       else if (EqDayData[i].properties["mag"] <= 5.44) {
-        color = "rgb(179, 255, 0)";
-        radius = EqDayData[i].properties["mag"] * 2;
-        }
-       else if (EqDayData[i].properties["mag"] <= 6.04) {
-        color = "green";
-        radius = EqDayData[i].properties["mag"] * 3;
-        }
-       else if (EqDayData[i].properties["mag"] <= 6.94) {
-        color = "orange";
-        radius = EqDayData[i].properties["mag"] * 4;
-        }
-       else if (EqDayData[i].properties["mag"] <= 7.94) {
-        color = "brown";
-        radius = EqDayData[i].properties["mag"] * 5;
-        }
-       else {
-        color = "red";
-        radius = EqDayData[i].properties["mag"] * 6;
-        }  
-
-
-  var geojson1DayDataOptions = {
-    radius: radius,
-    fillColor: color,
-    color: color,
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.5
-  };}
-
-
   L.geoJson(d1, {
+   style: function(feature) {
+      let mag = feature.properties.mag;
+      let color = "";
+      if (mag <= 2.54) {
+        color = "yellow";
+        radius = mag * 1;
+        }
+      else if (mag <= 5.44) {
+        color = "rgb(179, 255, 0)";
+        radius = mag * 2;
+        }
+      else if (mag <= 6.04) {
+        color = "green";
+        radius = mag * 3;
+        }
+      else if (mag <= 6.94) {
+        color = "orange";
+        radius = mag * 4;
+        }
+     else if (mag <= 7.94) {
+        color = "brown";
+        radius = mag * 5;
+        }
+     else {
+        color = "red";
+        radius = mag * 6;
+       }  
+
+     return {
+       color: color,
+       radius: radius
+     };
+   },
+
     pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, geojson1DayDataOptions);
+      return L.circleMarker(latlng, {
+        fillOpacity: 0.5
+        } 
+      );
     },
-    onEachFeature: onEachFeature
+    onEachFeature: onEachFeature,
   }).addTo(eq1Day);
-
 })
-
-
 //==========================Earthquake: Past Hour ==========================================================
 d3.json(queryEqUrl_1hr, function (dHr){
   let EqHrData = dHr.features;
@@ -280,51 +263,49 @@ d3.json(queryEqUrl_1hr, function (dHr){
          +"<p>"+ "Mag: " + (feature.properties.mag) + "</p>"
          );
      }
-  
-
-    for (var i = 0; i < EqHrData.length; i++) {
-      let color = "";
-       if (EqHrData[i].properties["mag"]<= 2.54) {
-        color = "yellow";
-        radius = EqHrData[i].properties["mag"] * 1;
-        }
-       else if (EqHrData[i].properties["mag"] <= 5.44) {
-        color = "rgb(179, 255, 0)";
-        radius = EqHrData[i].properties["mag"] * 2;
-        }
-       else if (EqHrData[i].properties["mag"] <= 6.04) {
-        color = "green";
-        radius = EqHrData[i].properties["mag"] * 3;
-        }
-       else if (EqHrData[i].properties["mag"] <= 6.94) {
-        color = "orange";
-        radius = EqHrData[i].properties["mag"] * 4;
-        }
-       else if (EqHrData[i].properties["mag"] <= 7.94) {
-        color = "brown";
-        radius = EqHrData[i].properties["mag"] * 5;
-        }
-       else {
-        color = "red";
-        radius = EqHrData[i].properties["mag"] * 6;
-        }  
-
-
-  var geojsonHrDataOptions = {
-    radius: radius,
-    fillColor: color,
-    color: color,
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.5
-  };}
-
 
   L.geoJson(dHr, {
+    style: function(feature) {
+      let mag = feature.properties.mag;
+      let color = "";
+      if (mag <= 2.54) {
+        color = "yellow";
+         radius = mag * 1;
+         }
+       else if (mag <= 5.44) {
+         color = "rgb(179, 255, 0)";
+         radius = mag * 2;
+         }
+       else if (mag <= 6.04) {
+         color = "green";
+         radius = mag * 3;
+         }
+       else if (mag <= 6.94) {
+         color = "orange";
+         radius = mag * 4;
+         }
+      else if (mag <= 7.94) {
+         color = "brown";
+         radius = mag * 5;
+         }
+      else {
+         color = "red";
+         radius = mag * 6;
+       }  
+
+     return {
+        color: color,
+        radius: radius
+      };
+   },
+
     pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, geojsonHrDataOptions);
+      return L.circleMarker(latlng, {
+        fillOpacity: 0.5
+        } 
+      );
     },
-    onEachFeature: onEachFeature
+    onEachFeature: onEachFeature,
   }).addTo(eq1Hr);
 
 })
